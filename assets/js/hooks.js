@@ -11,7 +11,7 @@ hooks.ChartJS = {
       data: {
         // random data to validate chart generation
         labels: ["A", "B", "C", "D", "E"],
-        datasets: [{ data: [14, 3, 8, 2, 1] }],
+        datasets: [{ data: [30, 3, 8, 2, 1] }],
       },
     };
     const chart = new Chart(ctx, data);
