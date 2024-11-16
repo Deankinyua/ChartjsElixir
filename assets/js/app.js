@@ -23,6 +23,12 @@ import { LiveSocket } from "phoenix_live_view";
 import hooks from "./hooks"; // Import hooks
 import topbar from "../vendor/topbar";
 
+// Cross-Site Request Forgery
+// tricks the victim into clicking a URL
+// that contains a maliciously crafted, unauthorized
+// request for a particular Web application.
+// The user’s browser then sends this maliciously
+// crafted request to a targeted Web application.
 let csrfToken = document
   .querySelector("meta[name='csrf-token']")
   .getAttribute("content");
