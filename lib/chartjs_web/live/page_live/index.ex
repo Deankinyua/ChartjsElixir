@@ -11,6 +11,17 @@ defmodule ChartjsWeb.PageLive.Index do
     {:noreply, socket}
   end
 
+  # * the following event is pushed from a phoenix hook
+  # * ignore  it there are some things that have not been setup
+
+  # def handle_event("load-blogs", _params, socket) do
+  #   page_no = socket.assigns.page_no + 1
+  #   new_blogs = page_no |> Blog.get_blogs()
+  #   blogs = socket.assigns.blogs ++ new_blogs
+  #   socket = assign(socket, blogs: blogs, page_no: page_no)
+  #   {:noreply, socket}
+  # end
+
   @impl true
   def render(assigns) do
     ~H"""
@@ -18,7 +29,13 @@ defmodule ChartjsWeb.PageLive.Index do
     <div>
       <canvas id="my-chart" phx-hook="ChartJS" data-points={Jason.encode!(@points)}></canvas>
 
-      <input type="text" name="user[phone_number]" id="user-phone-number" phx-hook="PhoneNumber" />
+      <input
+        type="text"
+        name="user[phone_number]"
+        id="user-phone-number"
+        phx-hook="PhoneNumber"
+        phx-mounted={JS.transition("animate-ping", time: 2000)}
+      />
     </div>
     """
   end

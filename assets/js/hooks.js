@@ -2,14 +2,18 @@
 import Chart from "chart.js/auto";
 
 let hooks = {};
+// to capture data attributes on the page use the dataset property
 
+// * ChartJS becomes a key in our hook object hooks.ChartJs
 hooks.ChartJS = {
   // this function will help deserialize the dataset
   dataset() {
     return JSON.parse(this.el.dataset.points);
   },
   mounted() {
+    // this.el will capture the element the actual phoenix hook is on
     const ctx = this.el;
+    console.log(this.el);
     const data = {
       type: "bar",
       data: {
